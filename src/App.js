@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
+import Home from "./components/users/Home";
 
 function App() {
   return (
     <div>
-      Welcome!
-      <br />
-      Add login screen here once user model is set up
+      <Home />
     </div>
   );
 }
