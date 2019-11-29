@@ -25,6 +25,7 @@ class NewUserForm extends Component {
       email: "",
       password: ""
     });
+    this.props.history.push("/books");
   };
   render() {
     const { name, email, password } = this.state;
