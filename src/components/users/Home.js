@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Container, Form, Button } from "semantic-ui-react";
 import { logIn } from "../../actions/userAction";
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
   constructor() {
@@ -59,7 +60,7 @@ class Home extends React.Component {
             </Button>
           </Form>
           <br />
-          NEED TO IMPLEMENT: New User? Sign Up Here
+          New User? Sign up <Link to="/newUser">here</Link>
         </Container>
       </div>
     );
