@@ -1,4 +1,4 @@
-export default function usersReducer(state = [], action) {
+export default function booksReducer(state = [], action) {
   switch (action.type) {
     default:
       return state;

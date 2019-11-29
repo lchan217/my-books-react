@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Container, Form, Button } from "semantic-ui-react";
+import { logIn } from "../../actions/userAction";
 
 class Home extends React.Component {
   constructor() {
@@ -16,6 +18,11 @@ class Home extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.props(logIn(this.state));
+    this.setState({
+      email: "",
+      password: ""
+    });
   };
 
   render() {
@@ -30,6 +37,8 @@ class Home extends React.Component {
             <Form.Field>
               <label>Email</label>
               <input
+                type="text"
+                name="email"
                 onChange={handleChange}
                 value={email}
                 placeholder="Email"
@@ -38,6 +47,8 @@ class Home extends React.Component {
             <Form.Field>
               <label>Password</label>
               <input
+                type="password"
+                name="password"
                 onChange={handleChange}
                 value={password}
                 placeholder="Password"
@@ -55,4 +66,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default connect(null, { logIn })(Home);
