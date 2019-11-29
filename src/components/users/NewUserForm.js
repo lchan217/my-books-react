@@ -9,7 +9,8 @@ class NewUserForm extends Component {
     this.state = {
       name: "",
       email: "",
-      password: ""
+      password: "",
+      id: ""
     };
   }
 
@@ -23,7 +24,8 @@ class NewUserForm extends Component {
     this.setState({
       name: "",
       email: "",
-      password: ""
+      password: "",
+      id: ""
     });
     this.props.history.push("/books");
   };
@@ -36,42 +38,47 @@ class NewUserForm extends Component {
           <Form.Field>
             <label>Name</label>
             <input
-              type="text"
-              name="name"
+              type='text'
+              name='name'
               onChange={handleChange}
               value={name}
-              placeholder="Name
-                "
+              placeholder='Name
+                '
             ></input>
           </Form.Field>
           <Form.Field>
             <label>Email</label>
             <input
-              type="text"
-              name="email"
+              type='text'
+              name='email'
               onChange={handleChange}
               value={email}
-              placeholder="Email
-                "
+              placeholder='Email
+                '
             ></input>
           </Form.Field>
           <Form.Field>
             <label>Password</label>
             <input
-              type="password"
-              name="password"
+              type='password'
+              name='password'
               onChange={handleChange}
               value={password}
-              placeholder="Password
-                "
+              placeholder='Password
+                '
             ></input>
           </Form.Field>
-
-          <Button type="submit">Submit</Button>
+          <Button type='submit'>Submit</Button>
         </Form>
       </div>
     );
   }
 }
 
-export default connect(null, { newUser })(NewUserForm);
+const mapStatetoProps = state => {
+  return {
+    users: state.users
+  };
+};
+
+export default connect(mapStatetoProps, { newUser })(NewUserForm);
