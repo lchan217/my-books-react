@@ -1,5 +1,4 @@
 const fetchBooks = id => {
-  debugger;
   return dispatch => {
     return fetch("http://localhost:3001/api/books")
       .then(response => response.json())
