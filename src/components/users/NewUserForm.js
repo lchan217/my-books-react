@@ -19,7 +19,7 @@ class NewUserForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props(newUser(this.state));
+    this.props.newUser(this.state);
     this.setState({
       name: "",
       email: "",
@@ -31,7 +31,7 @@ class NewUserForm extends Component {
     const { handleChange, handleSubmit } = this;
     return (
       <div>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Field>
             <label>Name</label>
             <input
@@ -65,10 +65,9 @@ class NewUserForm extends Component {
                 "
             ></input>
           </Form.Field>
+
+          <Button type="submit">Submit</Button>
         </Form>
-        <Button onSubmit={handleSubmit} type="submit">
-          Submit
-        </Button>
       </div>
     );
   }
