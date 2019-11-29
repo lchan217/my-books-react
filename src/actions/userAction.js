@@ -3,7 +3,8 @@ export const newUser = user => {
     const body = {
       name: user.name,
       email: user.email,
-      password: user.password
+      password: user.password,
+      id: user.id
     };
     fetch("http://localhost:3001/api/users", {
       method: "POST",
