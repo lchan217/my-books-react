@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Form } from "semantic-ui-react";
+import { Container, Form, Button } from "semantic-ui-react";
 
 class Home extends React.Component {
   constructor() {
@@ -9,7 +9,19 @@ class Home extends React.Component {
       password: ""
     };
   }
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+  };
+
   render() {
+    const { email, password } = this.state;
+    const { handleChange, handleSubmit } = this;
+
     return (
       <div>
         <Container>
@@ -17,12 +29,23 @@ class Home extends React.Component {
           <Form>
             <Form.Field>
               <label>Email</label>
-              <input placeholder="Email" />
+              <input
+                onChange={handleChange}
+                value={email}
+                placeholder="Email"
+              />
             </Form.Field>
             <Form.Field>
               <label>Password</label>
-              <input placeholder="Password" />
+              <input
+                onChange={handleChange}
+                value={password}
+                placeholder="Password"
+              />
             </Form.Field>
+            <Button onSubmit={handleSubmit} type="submit">
+              Submit
+            </Button>
           </Form>
           <br />
           NEED TO IMPLEMENT: New User? Sign Up Here
