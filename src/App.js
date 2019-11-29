@@ -1,11 +1,16 @@
 import React from "react";
 import "./App.css";
 import Home from "./components/users/Home";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import NewUserForm from "./components/users/NewUserForm";
 
 function App() {
   return (
     <div>
-      <Home />
+      <Router>
+        <Route exact path="/newUser" component={NewUserForm} />
+        <Route exact path="/" component={Home} />
+      </Router>
     </div>
   );
 }
