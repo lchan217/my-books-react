@@ -17,14 +17,14 @@ class Home extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    this.props(logIn(this.state));
-    this.setState({
-      email: "",
-      password: ""
-    });
-  };
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   this.props(logIn(this.state));
+  //   this.setState({
+  //     email: "",
+  //     password: ""
+  //   });
+  // };
 
   render() {
     const { email, password } = this.state;
@@ -67,4 +67,4 @@ class Home extends React.Component {
   }
 }
 
-export default connect(null, { logIn })(Home);
+export default Home;
