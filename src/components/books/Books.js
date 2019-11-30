@@ -4,7 +4,7 @@ import { fetchBooks } from "../../actions/bookActions.js";
 
 class Books extends Component {
   componentDidMount() {
-    this.props.fetchBooks();
+    // this.props.fetchBooks();
   }
 
   showBooks() {}
