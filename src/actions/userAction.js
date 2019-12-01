@@ -35,6 +35,7 @@ export const logIn = user => {
       .then(response => response.json())
       .then(data => {
         localStorage.setItem("jwt", data.jwt);
-      });
+      })
+      .catch(error => console.log("error:", error));
   };
 };
