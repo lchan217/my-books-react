@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchBooks } from "../../actions/bookActions.js";
 import $ from "jquery";
 
 class Books extends Component {
+  _isMounted = false;
+
   constructor() {
     super();
     this.state = {
       books: []
     };
   }
+
   componentDidMount() {
+    this._isMounted = true;
     let token = "Bearer " + localStorage.getItem("jwt");
     console.log(`token: ${token}`);
     $.ajax({
@@ -23,13 +26,16 @@ class Books extends Component {
       // Allows us to use this.setState inside success
       success: function(result) {
         console.log(result);
-        this.setState({ books: JSON.stringify(result) });
+        if (this._isMounted) {
+          this.setState({ books: JSON.stringify(result) });
+        }
       }
     });
-    // this.props.fetchBooks();
   }
 
-  getBooks() {}
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
     return (
@@ -41,16 +47,16 @@ class Books extends Component {
   }
 }
 
-const mapStatetoProps = state => {
-  return {
-    books: state.books
-  };
-};
+// const mapStatetoProps = state => {
+//   return {
+//     books: state.books
+//   };
+// };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchBooks: () => dispatch(fetchBooks())
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     fetchBooks: () => dispatch(fetchBooks())
+//   };
+// };
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Books);
+export default connect(null, null)(Books);

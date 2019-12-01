@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Container, Form, Button } from "semantic-ui-react";
-import { logIn } from "../../actions/userAction";
 import { Link } from "react-router-dom";
+import $ from "jquery";
 
 class Home extends React.Component {
   constructor() {
@@ -18,13 +18,29 @@ class Home extends React.Component {
   };
 
   handleSubmit = event => {
-    event.preventDefault();
-    this.props.logIn(this.state);
+    const request = {
+      auth: { email: this.state.email, password: this.state.password }
+    };
+    $.ajax({
+      url: "http://localhost:3001/api/user_token",
+      type: "POST",
+      data: request,
+      dataType: "json",
+      success: function(result) {
+        console.log("Success:", result);
+        localStorage.setItem("jwt", result.jwt);
+        if (result) {
+          window.location.href = "/books";
+        }
+      },
+      error: function(jqxhr, status, exception) {
+        console.log("Exception:", exception);
+      }
+    });
     this.setState({
       email: "",
       password: ""
     });
-    this.props.history.push("/books");
   };
 
   render() {
@@ -66,4 +82,4 @@ class Home extends React.Component {
   }
 }
 
-export default connect(null, { logIn })(Home);
+export default connect(null, null)(Home);
