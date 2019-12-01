@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { newUser } from "../../actions/userAction";
+import { newUser, logIn } from "../../actions/userAction";
 import { Button, Form } from "semantic-ui-react";
 
 class NewUserForm extends Component {
@@ -27,7 +27,7 @@ class NewUserForm extends Component {
       password: "",
       id: ""
     });
-    this.props.history.push("/books");
+    this.props.history.push("/");
   };
   render() {
     const { name, email, password } = this.state;
@@ -81,4 +81,4 @@ const mapStatetoProps = state => {
   };
 };
 
-export default connect(mapStatetoProps, { newUser })(NewUserForm);
+export default connect(mapStatetoProps, { logIn, newUser })(NewUserForm);

@@ -12,14 +12,15 @@ class Books extends Component {
   }
   componentDidMount() {
     let token = "Bearer " + localStorage.getItem("jwt");
-    console.log(token);
+    console.log(`token: ${token}`);
     $.ajax({
       url: "http://localhost:3001/api/books",
       type: "GET",
       beforeSend: function(xhr) {
         xhr.setRequestHeader("Authorization", token);
       },
-      context: this, // Allows us to use this.setState inside success
+      context: this,
+      // Allows us to use this.setState inside success
       success: function(result) {
         console.log(result);
         this.setState({ books: JSON.stringify(result) });

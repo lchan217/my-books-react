@@ -1,4 +1,21 @@
 export const newUser = user => {
+  // const request = {
+  //   auth: { email: user.email, password: user.password }
+  // };
+  // fetch("http://localhost:3001/api/user_token", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Accept: "application/json"
+  //   },
+  //   body: JSON.stringify(request)
+  // })
+  //   .then(response => response.json())
+  //   .then(data => console.log(`newUser: ${data}`))
+  //   .then(data => {
+  //     localStorage.setItem("jwt", data.jwt);
+  //   })
+  //   .catch(error => console.log("error:", error));
   return dispatch => {
     const body = {
       name: user.name,
@@ -33,6 +50,7 @@ export const logIn = user => {
       body: JSON.stringify(request)
     })
       .then(response => response.json())
+      .then(data => console.log(data.jwt))
       .then(data => {
         localStorage.setItem("jwt", data.jwt);
       })
