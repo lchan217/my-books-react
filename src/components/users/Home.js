@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Container, Form, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import $ from "jquery";
 
 class Home extends React.Component {
   constructor() {
@@ -17,7 +18,22 @@ class Home extends React.Component {
   };
 
   handleSubmit = event => {
-    event.preventDefault();
+    const request = {
+      auth: { email: this.state.email, password: this.state.password }
+    };
+    $.ajax({
+      url: "http://localhost:3001/api/user_token",
+      type: "POST",
+      data: request,
+      dataType: "json",
+      success: function(result) {
+        console.log(`success: ${result}`);
+        localStorage.setItem("jwt", result.jwt);
+      },
+      error: function(jqxhr, status, exception) {
+        alert("Exception:", exception);
+      }
+    });
     this.setState({
       email: "",
       password: ""
