@@ -29,6 +29,9 @@ class Home extends React.Component {
       success: function(result) {
         console.log("Success:", result);
         localStorage.setItem("jwt", result.jwt);
+        if (result) {
+          window.location.href = "/books";
+        }
       },
       error: function(jqxhr, status, exception) {
         console.log("Exception:", exception);
@@ -38,7 +41,6 @@ class Home extends React.Component {
       email: "",
       password: ""
     });
-    this.props.history.push("/books");
   };
 
   render() {
