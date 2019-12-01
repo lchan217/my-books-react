@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Container, Form, Button } from "semantic-ui-react";
-import { logIn } from "../../actions/userAction";
 import { Link } from "react-router-dom";
 
 class Home extends React.Component {
@@ -19,7 +18,6 @@ class Home extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.logIn(this.state);
     this.setState({
       email: "",
       password: ""
@@ -66,4 +64,4 @@ class Home extends React.Component {
   }
 }
 
-export default connect(null, { logIn })(Home);
+export default connect(null, null)(Home);

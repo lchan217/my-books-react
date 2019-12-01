@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { newUser, logIn } from "../../actions/userAction";
+import { newUser } from "../../actions/userAction";
 import { Button, Form } from "semantic-ui-react";
 
 class NewUserForm extends Component {
@@ -81,4 +81,4 @@ const mapStatetoProps = state => {
   };
 };
 
-export default connect(mapStatetoProps, { logIn, newUser })(NewUserForm);
+export default connect(mapStatetoProps, { newUser })(NewUserForm);
