@@ -27,11 +27,11 @@ class Home extends React.Component {
       data: request,
       dataType: "json",
       success: function(result) {
-        console.log(`success: ${result}`);
+        console.log("Success:", result);
         localStorage.setItem("jwt", result.jwt);
       },
       error: function(jqxhr, status, exception) {
-        alert("Exception:", exception);
+        console.log("Exception:", exception);
       }
     });
     this.setState({

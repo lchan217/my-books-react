@@ -4,6 +4,7 @@ import $ from "jquery";
 
 class Books extends Component {
   _isMounted = false;
+
   constructor() {
     super();
     this.state = {
@@ -12,6 +13,7 @@ class Books extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     let token = "Bearer " + localStorage.getItem("jwt");
     console.log(`token: ${token}`);
     $.ajax({
