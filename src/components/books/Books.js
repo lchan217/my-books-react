@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import $ from "jquery";
+import BookList from "./BookList";
 
 class Books extends Component {
   _isMounted = false;
@@ -24,10 +25,11 @@ class Books extends Component {
       },
       context: this,
       // Allows us to use this.setState inside success
-      success: function(result) {
-        console.log(result);
+      success: function(results) {
+        console.log(results);
         if (this._isMounted) {
-          this.setState({ books: JSON.stringify(result) });
+          // results.map(result => delete result.user);
+          this.setState({ books: results });
         }
       }
     });
@@ -41,16 +43,14 @@ class Books extends Component {
     return (
       <div>
         Books Component
-        {this.state.books}
+        <BookList books={this.state.books} />
       </div>
     );
   }
 }
 
 // const mapStatetoProps = state => {
-//   return {
-//     books: state.books
-//   };
+//   return { books: state.books };
 // };
 
 // const mapDispatchToProps = dispatch => {

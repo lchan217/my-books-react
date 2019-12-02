@@ -3,7 +3,10 @@ import React from "react";
 const BookList = props => {
   return (
     <div>
-      booklist Books: {props} <br />
+      booklist <br />
+      {props.books.map(book => (
+        <li>{book.title}</li>
+      ))}{" "}
     </div>
   );
 };
