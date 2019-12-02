@@ -28,7 +28,7 @@ class Books extends Component {
       success: function(results) {
         console.log(results);
         if (this._isMounted) {
-          results.map(result => delete result.user);
+          // results.map(result => delete result.user);
           this.setState({ books: results });
         }
       }
