@@ -40,15 +40,18 @@ class Books extends Component {
   }
 
   render() {
-    return <div>Books Component</div>;
+    return (
+      <div>
+        Books Component
+        <BookList books={this.state.books} />
+      </div>
+    );
   }
 }
 
-const mapStatetoProps = state => {
-  return {
-    books: state.books
-  };
-};
+// const mapStatetoProps = state => {
+//   return { books: state.books };
+// };
 
 // const mapDispatchToProps = dispatch => {
 //   return {
@@ -56,4 +59,4 @@ const mapStatetoProps = state => {
 //   };
 // };
 
-export default connect(mapStatetoProps, null)(Books);
+export default connect(null, null)(Books);
