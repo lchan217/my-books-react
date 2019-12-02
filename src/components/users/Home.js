@@ -34,7 +34,7 @@ class Home extends React.Component {
         }
       },
       error: function(jqxhr, status, exception) {
-        console.log("Exception:", exception);
+        alert("User not found or incorrect password. Please try again.");
       }
     });
     this.setState({
