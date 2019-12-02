@@ -4,8 +4,8 @@ const BookList = props => {
   return (
     <div>
       booklist <br />
-      {props.books.map(book => (
-        <li>{book.title}</li>
+      {props.books.map((book, idx) => (
+        <li key={idx}>{book.title}</li>
       ))}{" "}
     </div>
   );

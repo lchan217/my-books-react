@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import $ from "jquery";
 import BookList from "./BookList";
 
-class Books extends Component {
+class BookContainer extends Component {
   _isMounted = false;
 
   constructor() {
@@ -59,4 +59,4 @@ class Books extends Component {
 //   };
 // };
 
-export default connect(null, null)(Books);
+export default connect(null, null)(BookContainer);
