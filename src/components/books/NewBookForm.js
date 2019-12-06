@@ -12,7 +12,7 @@ class NewBookForm extends Component {
       pages: "",
       genre: "",
       author_id: "",
-      user_id: ""
+      user_id: 0
     };
   }
 
@@ -21,16 +21,7 @@ class NewBookForm extends Component {
   };
 
   render() {
-    const {
-      title,
-      author,
-      rating,
-      review,
-      pages,
-      genre,
-      author_id,
-      user_id
-    } = this.state;
+    const { title, author, rating, review, pages, genre } = this.state;
     const { handleChange, handleSubmit } = this;
 
     return (
