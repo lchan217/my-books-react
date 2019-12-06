@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { newUser } from "../../actions/userAction";
+import { newUser } from "../../actions/userActions";
 import { Button, Form } from "semantic-ui-react";
 
 class NewUserForm extends Component {
