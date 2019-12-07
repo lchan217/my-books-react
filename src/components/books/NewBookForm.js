@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form } from "semantic-ui-react";
+import { newBook } from "../../actions/bookActions";
+import { connect } from "react-redux";
 
 class NewBookForm extends Component {
   constructor() {
@@ -11,13 +13,26 @@ class NewBookForm extends Component {
       review: "",
       pages: "",
       genre: "",
-      author_id: "",
-      user_id: 0
+      author_id: ""
     };
   }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.newBook(this.state);
+    this.setState({
+      title: "",
+      author: "",
+      rating: "",
+      review: "",
+      pages: "",
+      genre: "",
+      author_id: ""
+    });
   };
 
   render() {
@@ -27,7 +42,7 @@ class NewBookForm extends Component {
     return (
       <div>
         new book form
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <label>Title</label>
           <input
             type='text'
@@ -89,4 +104,4 @@ class NewBookForm extends Component {
   }
 }
 
-export default NewBookForm;
+export default connect(null, { newBook })(NewBookForm);
