@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { newBook } from "../../actions/bookActions";
 import { connect } from "react-redux";
+import $ from "jquery";
 
 class NewBookForm extends Component {
   constructor() {
@@ -23,15 +24,28 @@ class NewBookForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.newBook(this.state);
-    this.setState({
-      title: "",
-      author: "",
-      rating: "",
-      review: "",
-      pages: "",
-      genre: "",
-      author_id: ""
+
+    let token = "Bearer " + localStorage.getItem("jwt");
+    console.log(`token: ${token}`);
+    $.ajax({
+      url: "http://localhost:3001/api/books",
+      type: "POST",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("Authorization", token);
+      },
+      context: this,
+      success: function(results) {
+        console.log(results);
+        this.setState({
+          title: "",
+          author: "",
+          rating: "",
+          review: "",
+          pages: "",
+          genre: "",
+          author_id: ""
+        });
+      }
     });
   };
 
