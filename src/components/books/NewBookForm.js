@@ -26,10 +26,21 @@ class NewBookForm extends Component {
     event.preventDefault();
 
     let token = "Bearer " + localStorage.getItem("jwt");
+    let body = {
+      title: this.state.title,
+      author: this.state.author,
+      rating: this.state.rating,
+      review: this.state.review,
+      pages: this.state.pages,
+      genre: this.state.genre
+    };
     console.log(`token: ${token}`);
     $.ajax({
       url: "http://localhost:3001/api/books",
       type: "POST",
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify(body),
+      dataType: "json",
       beforeSend: function(xhr) {
         xhr.setRequestHeader("Authorization", token);
       },
@@ -42,8 +53,7 @@ class NewBookForm extends Component {
           rating: "",
           review: "",
           pages: "",
-          genre: "",
-          author_id: ""
+          genre: ""
         });
       }
     });
