@@ -47,6 +47,7 @@ class NewBookForm extends Component {
       context: this,
       success: function(results) {
         console.log(results);
+        window.location.href = "/books";
         this.setState({
           title: "",
           author: "",

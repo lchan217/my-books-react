@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import $ from "jquery";
 import BookList from "./BookList";
-import NewBookForm from "./NewBookForm";
+import { Container } from "semantic-ui-react";
 
 class BookContainer extends Component {
   _isMounted = false;
@@ -42,11 +43,11 @@ class BookContainer extends Component {
 
   render() {
     return (
-      <div>
-        Books Component
-        <NewBookForm />
+      <Container>
+        <h1>My Books</h1>
+        <Link to='/newBook'>Add A New Book</Link>
         <BookList books={this.state.books} />
-      </div>
+      </Container>
     );
   }
 }
