@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Button, Form } from "semantic-ui-react";
+import { newBook } from "../../actions/bookActions";
+import { connect } from "react-redux";
+import $ from "jquery";
 
 class NewBookForm extends Component {
   constructor() {
@@ -11,13 +14,49 @@ class NewBookForm extends Component {
       review: "",
       pages: "",
       genre: "",
-      author_id: "",
-      user_id: 0
+      author_id: ""
     };
   }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    let token = "Bearer " + localStorage.getItem("jwt");
+    let body = {
+      title: this.state.title,
+      author: this.state.author,
+      rating: this.state.rating,
+      review: this.state.review,
+      pages: this.state.pages,
+      genre: this.state.genre
+    };
+    console.log(`token: ${token}`);
+    $.ajax({
+      url: "http://localhost:3001/api/books",
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify(body),
+      dataType: "json",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("Authorization", token);
+      },
+      context: this,
+      success: function(results) {
+        console.log(results);
+        this.setState({
+          title: "",
+          author: "",
+          rating: "",
+          review: "",
+          pages: "",
+          genre: ""
+        });
+      }
+    });
   };
 
   render() {
@@ -27,7 +66,7 @@ class NewBookForm extends Component {
     return (
       <div>
         new book form
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <label>Title</label>
           <input
             type='text'
@@ -89,4 +128,4 @@ class NewBookForm extends Component {
   }
 }
 
-export default NewBookForm;
+export default connect(null, { newBook })(NewBookForm);
