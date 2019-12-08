@@ -32,7 +32,8 @@ class NewBookForm extends Component {
       rating: this.state.rating,
       review: this.state.review,
       pages: this.state.pages,
-      genre: this.state.genre
+      genre: this.state.genre,
+      img: this.state.img
     };
     console.log(`token: ${token}`);
     $.ajax({
@@ -54,14 +55,15 @@ class NewBookForm extends Component {
           rating: "",
           review: "",
           pages: "",
-          genre: ""
+          genre: "",
+          img: ""
         });
       }
     });
   };
 
   render() {
-    const { title, author, rating, review, pages, genre } = this.state;
+    const { title, author, rating, review, pages, genre, img } = this.state;
     const { handleChange, handleSubmit } = this;
 
     return (
@@ -120,6 +122,15 @@ class NewBookForm extends Component {
             onChange={handleChange}
             value={genre}
             placeholder='Genre
+                '
+          ></input>
+          <label>Book Cover</label>
+          <input
+            type='text'
+            name='img'
+            onChange={handleChange}
+            value={img}
+            placeholder='Book Cover
                 '
           ></input>
           <Button> Submit </Button>
