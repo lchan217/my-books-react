@@ -68,7 +68,7 @@ class NewBookForm extends Component {
 
     return (
       <div>
-        new book form
+        New Book
         <Form onSubmit={handleSubmit}>
           <label>Title</label>
           <input
