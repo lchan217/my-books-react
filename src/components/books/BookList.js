@@ -7,7 +7,7 @@ const BookList = props => {
       booklist <br />
       {props.books.map((book, idx) => (
         <li key={idx}>
-          {book.title} <Link to='/edit'>Edit</Link>{" "}
+          {book.title} by {book.author} <Link to='/edit'>Edit</Link>{" "}
           <Link to='/delete'>delete </Link>
         </li>
       ))}{" "}

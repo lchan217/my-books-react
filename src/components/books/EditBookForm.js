@@ -68,7 +68,7 @@ class EditBookForm extends Component {
 
     return (
       <div>
-        new book form
+        Edit Book
         <Form onSubmit={handleSubmit}>
           <label>Title</label>
           <input
