@@ -38,7 +38,7 @@ class EditBookForm extends Component {
     console.log(`token: ${token}`);
     $.ajax({
       url: "http://localhost:3001/api/books",
-      type: "POST",
+      type: "PUT",
       contentType: "application/json; charset=utf-8",
       data: JSON.stringify(body),
       dataType: "json",
