@@ -35,7 +35,7 @@ class NewBookForm extends Component {
       genre: this.state.genre,
       img: this.state.img
     };
-    console.log(`token: ${token}`);
+    console.log(`token new: ${token}`);
     $.ajax({
       url: "http://localhost:3001/api/books",
       type: "POST",

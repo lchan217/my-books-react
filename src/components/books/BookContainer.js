@@ -18,7 +18,7 @@ class BookContainer extends Component {
   componentDidMount() {
     this._isMounted = true;
     let token = "Bearer " + localStorage.getItem("jwt");
-    console.log(`token: ${token}`);
+    console.log(`token index: ${token}`);
     $.ajax({
       url: "http://localhost:3001/api/books",
       type: "GET",
