@@ -33,9 +33,10 @@ class EditBookForm extends Component {
       review: this.state.review,
       pages: this.state.pages,
       genre: this.state.genre,
-      img: this.state.img
+      img: this.state.img,
+      id: this.props.book.id
     };
-    console.log(`token: ${token}`);
+    console.log(`token edit: ${token}`);
     $.ajax({
       url: "http://localhost:3001/api/books",
       type: "PUT",
