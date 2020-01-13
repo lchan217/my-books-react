@@ -7,24 +7,25 @@ class BookList extends Component {
   constructor() {
     super();
     this.state = {
-      showEdit: false
+      showEdit: false,
+      book: null
     };
   }
 
   handleOnClick = book => {
-    this.handleEdit();
-    this.showEdit(book);
+    this.handleEdit(book);
+    this.showEdit();
   };
 
-  handleEdit = () => {
-    this.setState({ showEdit: true });
+  handleEdit = book => {
+    this.setState({ showEdit: true, book: book });
   };
 
-  showEdit = book => {
+  showEdit = () => {
     if (this.state.showEdit) {
       return (
         <div>
-          <EditBookForm book={book} />
+          <EditBookForm book={this.state.book} />
           <br />
         </div>
       );
