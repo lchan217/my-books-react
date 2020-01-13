@@ -3,6 +3,18 @@ import { Link } from "react-router-dom";
 import $ from "jquery";
 
 class BookList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showEdit: false
+    };
+  }
+
+  handleEdit = event => {
+    event.preventDefault();
+    this.setState({ showEdit: true });
+  };
+
   handleDelete = id => {
     let token = "Bearer " + localStorage.getItem("jwt");
     console.log(`token delete: ${token}`);
@@ -30,9 +42,7 @@ class BookList extends Component {
         {this.props.books.map((book, idx) => (
           <li key={idx}>
             {book.id} - {book.title} by {book.author}{" "}
-            <Link to='edit'>
-              <button type='button'>Edit</button>
-            </Link>
+            <button onClick={this.handleEdit}>Edit</button>
             <button onClick={() => this.handleDelete(book.id)}>Delete</button>
           </li>
         ))}{" "}
