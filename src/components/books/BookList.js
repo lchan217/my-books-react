@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import $ from "jquery";
+import EditBookForm from "./EditBookForm";
 
 class BookList extends Component {
   constructor() {
@@ -13,6 +14,17 @@ class BookList extends Component {
   handleEdit = event => {
     event.preventDefault();
     this.setState({ showEdit: true });
+  };
+
+  showEdit = book => {
+    if (this.state.showEdit) {
+      return (
+        <div>
+          <EditBookForm book={book} />
+          <br />
+        </div>
+      );
+    }
   };
 
   handleDelete = id => {
@@ -39,10 +51,11 @@ class BookList extends Component {
     return (
       <div>
         booklist <br />
+        {this.showEdit()}
         {this.props.books.map((book, idx) => (
           <li key={idx}>
             {book.id} - {book.title} by {book.author}{" "}
-            <button onClick={this.handleEdit}>Edit</button>
+            <button onClick={() => this.showEdit(book)}>Edit</button>
             <button onClick={() => this.handleDelete(book.id)}>Delete</button>
           </li>
         ))}{" "}
