@@ -11,8 +11,12 @@ class BookList extends Component {
     };
   }
 
-  handleEdit = event => {
-    event.preventDefault();
+  handleOnClick = book => {
+    this.handleEdit();
+    this.showEdit(book);
+  };
+
+  handleEdit = () => {
     this.setState({ showEdit: true });
   };
 
@@ -50,12 +54,12 @@ class BookList extends Component {
   render() {
     return (
       <div>
-        booklist <br />
+        <h1>booklist</h1>
         {this.showEdit()}
         {this.props.books.map((book, idx) => (
           <li key={idx}>
             {book.id} - {book.title} by {book.author}{" "}
-            <button onClick={() => this.showEdit(book)}>Edit</button>
+            <button onClick={() => this.handleOnClick(book)}>Edit</button>
             <button onClick={() => this.handleDelete(book.id)}>Delete</button>
           </li>
         ))}{" "}
