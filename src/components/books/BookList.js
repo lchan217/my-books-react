@@ -1,8 +1,37 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import $ from "jquery";
+import EditBookForm from "./EditBookForm";
 
 class BookList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showEdit: false,
+      book: null
+    };
+  }
+
+  handleOnClick = book => {
+    this.handleEdit(book);
+    this.showEdit();
+  };
+
+  handleEdit = book => {
+    this.setState({ showEdit: true, book: book });
+  };
+
+  showEdit = () => {
+    if (this.state.showEdit) {
+      return (
+        <div>
+          <EditBookForm book={this.state.book} />
+          <br />
+        </div>
+      );
+    }
+  };
+
   handleDelete = id => {
     let token = "Bearer " + localStorage.getItem("jwt");
     console.log(`token delete: ${token}`);
@@ -26,13 +55,12 @@ class BookList extends Component {
   render() {
     return (
       <div>
-        booklist <br />
+        <h1>booklist</h1>
+        {this.showEdit()}
         {this.props.books.map((book, idx) => (
           <li key={idx}>
             {book.id} - {book.title} by {book.author}{" "}
-            <Link to='edit'>
-              <button type='button'>Edit</button>
-            </Link>
+            <button onClick={() => this.handleOnClick(book)}>Edit</button>
             <button onClick={() => this.handleDelete(book.id)}>Delete</button>
           </li>
         ))}{" "}

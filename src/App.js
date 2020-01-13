@@ -15,7 +15,6 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/books' component={BookContainer} />
         <Route exact path='/newBook' component={NewBookForm} />
-        <Route exact path='/edit' component={EditBookForm} />
       </Router>
     </div>
   );

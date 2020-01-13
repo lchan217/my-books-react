@@ -33,9 +33,10 @@ class EditBookForm extends Component {
       review: this.state.review,
       pages: this.state.pages,
       genre: this.state.genre,
-      img: this.state.img
+      img: this.state.img,
+      id: this.props.book.id
     };
-    console.log(`token: ${token}`);
+    console.log(`token edit: ${token}`);
     $.ajax({
       url: "http://localhost:3001/api/books",
       type: "PUT",
@@ -76,8 +77,7 @@ class EditBookForm extends Component {
             name='title'
             onChange={handleChange}
             value={title}
-            placeholder='Title
-                '
+            placeholder={this.props.book.title}
           ></input>
           <label>Author</label>
           <input
@@ -85,8 +85,7 @@ class EditBookForm extends Component {
             name='author'
             onChange={handleChange}
             value={author}
-            placeholder='Author
-                '
+            placeholder={this.props.book.author}
           ></input>
           <label>Rating</label>
           <input
@@ -94,8 +93,7 @@ class EditBookForm extends Component {
             name='rating'
             onChange={handleChange}
             value={rating}
-            placeholder='Rating
-                '
+            placeholder={this.props.book.rating}
           ></input>
           <label>Review</label>
           <input
@@ -103,8 +101,7 @@ class EditBookForm extends Component {
             name='review'
             onChange={handleChange}
             value={review}
-            placeholder='Review
-                '
+            placeholder={this.props.book.review}
           ></input>
           <label>Pages</label>
           <input
@@ -112,8 +109,7 @@ class EditBookForm extends Component {
             name='pages'
             onChange={handleChange}
             value={pages}
-            placeholder='Pages
-                '
+            placeholder={this.props.book.pages}
           ></input>
           <label>Genre</label>
           <input
@@ -121,8 +117,7 @@ class EditBookForm extends Component {
             name='genre'
             onChange={handleChange}
             value={genre}
-            placeholder='Genre
-                '
+            placeholder={this.props.book.genre}
           ></input>
           <label>Book Cover</label>
           <input
@@ -130,8 +125,7 @@ class EditBookForm extends Component {
             name='img'
             onChange={handleChange}
             value={img}
-            placeholder='Book Cover
-                '
+            placeholder={this.props.book.img}
           ></input>
           <Button> Submit </Button>
         </Form>
