@@ -9,6 +9,10 @@ class NavBar extends Component {
       search: ""
     };
   }
+
+  handleChange = event => {
+    this.setState({ search: event.target.value });
+  };
   render() {
     return (
       <div className='navBar'>
@@ -24,6 +28,16 @@ class NavBar extends Component {
           </Menu.Item>
           <Menu.Item className='menu-item' as={Link} to='/not-sure-yet'>
             Community
+          </Menu.Item>
+          <Menu.Item className='menu-item'>
+            <form>
+              <input
+                type='text'
+                placeholder='Search books'
+                value={this.state.value}
+                onChange={this.handleChange}
+              ></input>
+            </form>
           </Menu.Item>
         </Menu>
       </div>
