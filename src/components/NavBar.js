@@ -13,6 +13,12 @@ class NavBar extends Component {
   handleChange = event => {
     this.setState({ search: event.target.value });
   };
+
+  handleSubmit = event => {
+    alert("A name was submitted: " + this.state.search);
+    event.preventDefault();
+    //insert fetch request here
+  };
   render() {
     return (
       <div className='navBar'>
@@ -30,11 +36,11 @@ class NavBar extends Component {
             Community
           </Menu.Item>
           <Menu.Item className='menu-item'>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <input
                 type='text'
                 placeholder='Search books'
-                value={this.state.value}
+                value={this.state.search}
                 onChange={this.handleChange}
               ></input>
             </form>
