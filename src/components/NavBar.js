@@ -6,7 +6,7 @@ const NavBar = () => {
   return (
     <div className='navBar'>
       <Menu>
-        <Menu.Item className='menu-item' as={Link} to='/all-books'>
+        <Menu.Item className='menu-item' as={Link} to='/feed'>
           Home
         </Menu.Item>
         <Menu.Item className='menu-item' as={Link} to='/books'>
