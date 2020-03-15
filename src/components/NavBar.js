@@ -15,10 +15,22 @@ class NavBar extends Component {
   };
 
   handleSubmit = event => {
-    alert("A name was submitted: " + this.state.search);
     event.preventDefault();
-    //insert fetch request here
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (xhttp.readyState === 4 && xhttp.status === 200) {
+        document.getElementById("search-results").innerHTML =
+          xhttp.responseText;
+      }
+    };
+    xhttp.open(
+      "GET",
+      `https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search.xml?key=K5O3q88LUwbvFyxwKQ40Q&q=${this.state.search}`,
+      true
+    );
+    xhttp.send();
   };
+
   render() {
     return (
       <div className='navBar'>
@@ -46,6 +58,7 @@ class NavBar extends Component {
             </form>
           </Menu.Item>
         </Menu>
+        <div id='search-results'>Search Results: </div>
       </div>
     );
   }
